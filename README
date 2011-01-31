@@ -1,0 +1,7 @@
+Shopp - Product Organizer
+=========================
+
+This plugin provides an administrative interface for organizing products within
+their categories. It allows you to easily provide a default sorting for your
+products. Proper integration requires the customization of the category page
+template which is provided as a sample in the 'samples' folder.
