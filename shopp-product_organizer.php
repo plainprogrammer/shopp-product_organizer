@@ -68,9 +68,6 @@ class ShoppProductOrganizerView {
   }
   
   public function print_product_organizer_page(){
-    wp_enqueue_script('jQuery');
-    wp_enqueue_script('jquery-ui-sortable');
-    
     include_once('views/admin_product_organizer_page.phtml');
   }
 }
@@ -99,8 +96,14 @@ function load_shopp_product_organizer() {
 	$shopp_product_organizer = new ShoppProductOrganizerController;
 }
 
+function shopp_product_organizer_load_scripts() {
+  wp_enqueue_script("jquery-ui-sortable");
+}
+
 // Integration calls
 register_activation_hook(__FILE__,'shopp_product_organizer_install');
 
 add_action('init', 'shopp_product_organizer_init_event');
 add_action('plugins_loaded', 'load_shopp_product_organizer');
+
+add_action('admin_print_scripts-shopp_page_shopp-product_organizer', 'shopp_product_organizer_load_scripts' );

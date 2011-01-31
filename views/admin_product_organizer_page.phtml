@@ -1,5 +1,13 @@
 <div class="wrap shopp">
 	<h2><?php _e('Product Organizer', 'shopp-product_organizer'); ?></h2>
 	<hr/>
-	<!-- TODO: Add the sorter. -->
+  <ul id="sortable-products">
+    
+  </ul>
 </div>
+<script type="text/javascript">
+ jQuery(function($) { 
+   $("#sortable-products").sortable();
+   $("#sortable-products").disableSelection();
+  });
+</script>
