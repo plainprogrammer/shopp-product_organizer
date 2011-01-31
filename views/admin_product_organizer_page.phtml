@@ -1,8 +1,27 @@
 <div class="wrap shopp">
 	<h2><?php _e('Product Organizer', 'shopp-product_organizer'); ?></h2>
 	<hr/>
+	<div class="tablenav">
+		<?php if ($page_links) echo "<div class='tablenav-pages'>$page_links</div>"; ?>
+		<div class="alignleft actions filters">
+		<select name="cat" class="filters">
+		<?php echo $categories_menu; ?>
+		</select>
+		<input type="submit" id="filter-button" value="<?php _e('Filter','Shopp'); ?>" class="button-secondary" />
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
   <ul id="sortable-products">
-    
+  <?php
+    foreach ($Products as $key => $Product):
+      $ProductID = $Product->id;
+      $ProductName = empty($Product->name)?'('.__('no product name','Shopp').')':$Product->name;
+  ?>
+    <li id="<?php echo $ProductID; ?>"><?php echo $ProductName; ?></li>
+  <?php
+    endforeach;
+  ?>
   </ul>
 </div>
 <script type="text/javascript">
