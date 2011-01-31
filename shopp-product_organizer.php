@@ -1,4 +1,12 @@
 <?php
+/*
+Plugin Name: Shopp Product Organizer
+Description: Custom product sorter for Shopp.
+Author: James Thompson (james@plainprograms.com)
+Version: 1.0
+Author URI: http://plainprograms.com
+*/
+
 /* shopp-product_organizer
  *
  * This extension adds a means for managing the default ordering of Shopp
@@ -35,7 +43,8 @@ class ShoppProductOrganizerController {
       $this->shopp->Flow->Admin->MainMenu,
       __('Product Organizer', 'shopp-product_organizer'),
       __('Product Organizer', 'shopp-product_organizer'),
-      defined('SHOPP_USERLEVEL') ? SHOPP_USERLEVEL : 'manage_products', 'shopp-product_organizer',
+      defined('SHOPP_USERLEVEL') ? SHOPP_USERLEVEL : 'manage_options',
+      'shopp-product_organizer',
       array(&$this->view, 'print_product_organizer_page'));
   }
 }
@@ -59,6 +68,9 @@ class ShoppProductOrganizerView {
   }
   
   public function print_product_organizer_page(){
+    wp_enqueue_script('jQuery');
+    wp_enqueue_script('jquery-ui-sortable');
+    
     include_once('views/admin_product_organizer_page.phtml');
   }
 }
