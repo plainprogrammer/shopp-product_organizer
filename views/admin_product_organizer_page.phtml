@@ -6,8 +6,19 @@
   </ul>
 </div>
 <script type="text/javascript">
- jQuery(function($) { 
-   $("#sortable-products").sortable();
-   $("#sortable-products").disableSelection();
+  jQuery(function($) { 
+    $("#sortable-products").sortable();
+    $("#sortable-products").disableSelection();
+   
+    $("#sortable-products").bind("sortupdate", function(event, ui) {
+      var data = {
+     		action: 'shopp-product_organizer-update_order',
+     		sorted: $(ui).sortable('toArray')
+     	};
+
+     	jQuery.post(ajaxurl, data, function(response) {
+     		// TODO: Do something with the response...
+     	});
+    });
   });
 </script>

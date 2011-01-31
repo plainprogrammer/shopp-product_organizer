@@ -32,6 +32,7 @@ class ShoppProductOrganizerController {
     $this->view = new ShoppProductOrganizerView;
     
     add_action('shopp_init', array(&$this, 'init'));
+    add_action('wp_ajax_shopp-product_organizer-update_order', array(&$this, 'update_order_callback'));
   }
   
   public function init(){
@@ -46,6 +47,14 @@ class ShoppProductOrganizerController {
       defined('SHOPP_USERLEVEL') ? SHOPP_USERLEVEL : 'manage_options',
       'shopp-product_organizer',
       array(&$this->view, 'print_product_organizer_page'));
+  }
+  
+  function update_order_callback() {
+  	$sorted = $_POST['sorted'];
+  	
+  	// TODO: Do something with the sorted data.
+
+  	die();
   }
 }
 
